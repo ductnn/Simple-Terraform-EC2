@@ -1,0 +1,26 @@
+node {
+    checkout()
+    init()
+    lint()
+}
+
+def checkout() {
+    stage('Clone') {
+        // git branch: 'master', url: 'https://github.com/ductnn/Simple-Terraform-EC2.git'
+        checkout scm
+    }
+}
+
+def init() {
+    stage('Init') {
+        sh 'ls && whoami'
+        sh 'cd dev && terraform init'
+    }
+}
+
+def lint() {
+    stage('Init') {
+        sh 'cd dev && terraform fmt'
+        sh 'cd dev && terraform validate'
+    }
+}
