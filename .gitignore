@@ -1,5 +1,5 @@
 # Local .terraform directories
-**/.terraform/*
+.terraform
 
 # .tfstate files
 *.tfstate
@@ -33,7 +33,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 kubeconfig*
-terraform.lock.hcl
+.terraform.lock.hcl
 
 # DS_Store
 *.DS_Store

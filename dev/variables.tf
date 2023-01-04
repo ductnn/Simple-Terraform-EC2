@@ -1,4 +1,4 @@
-#--- common variable
+# Common variables
 variable "common_aws_access_access_key" {
   type        = string
   description = "value"
