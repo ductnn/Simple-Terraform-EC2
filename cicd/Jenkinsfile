@@ -1,8 +1,13 @@
 node {
-    checkout()
-    init()
-    lint()
-    plan()
+    withCredentials([
+        string(credentialsId: "access_key", variable: 'access_key'),
+        string(credentialsId: "access_secret_key", variable: 'access_secret_key')
+    ]) {
+        checkout()
+        init()
+        lint()
+        plan()
+    }
 }
 
 def checkout() {
@@ -31,11 +36,6 @@ def lint() {
 }
 
 def plan() {
-    environment {
-        AWS_ACCESS_KEY_ID     = credentials('access_key')
-        AWS_SECRET_ACCESS_KEY = credentials('access_secret_key')
-    }
-    sh 'echo $AWS_ACCESS_KEY_ID'
     stage('Plan') {
         dir ("dev") {
             sh 'terraform plan'
