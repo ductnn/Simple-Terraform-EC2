@@ -20,7 +20,8 @@ data "aws_ami" "ubuntu_image" {
 
 locals {
   name   = "Demo"
-  region = var.common_aws_region
+  # region = var.common_aws_region
+  region = "us-east-1"
 
   user_data = <<-EOT
   #!/bin/bash
