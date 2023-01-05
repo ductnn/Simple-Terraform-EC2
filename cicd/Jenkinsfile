@@ -1,11 +1,17 @@
+import hudson.plugins.ansicolor
+
 node {
     withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
-        ansiColor('xterm') {
-            checkout()
-            init()
-            lint()
-            plan()
-        }
+        checkout()
+        init()
+        lint()
+        plan()
+        // ansiColor('xterm') {
+        //     checkout()
+        //     init()
+        //     lint()
+        //     plan()
+        // }
     }
 }
 
