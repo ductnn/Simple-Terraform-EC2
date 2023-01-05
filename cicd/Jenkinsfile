@@ -1,8 +1,5 @@
 node {
-    withCredentials([
-        string(credentialsId: "access_key", variable: 'access_key'),
-        string(credentialsId: "access_secret_key", variable: 'access_secret_key')
-    ]) {
+    withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
         checkout()
         init()
         lint()
