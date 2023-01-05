@@ -37,6 +37,7 @@ def plan() {
     }
     stage('Plan') {
         dir ("dev") {
+            sh 'echo $AWS_ACCESS_KEY_ID'
             sh 'terraform plan'
         }
     }
