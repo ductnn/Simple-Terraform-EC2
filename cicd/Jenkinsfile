@@ -2,6 +2,7 @@ node {
     checkout()
     init()
     lint()
+    plan()
 }
 
 environment {
@@ -30,6 +31,14 @@ def lint() {
         dir ("dev") {
             sh 'terraform fmt'
             sh 'terraform validate'
+        }
+    }
+}
+
+def plan() {
+    stage('Plan') {
+        dir ("dev") {
+            sh 'terraform plan'
         }
     }
 }
