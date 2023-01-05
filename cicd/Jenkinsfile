@@ -35,6 +35,7 @@ def plan() {
         AWS_ACCESS_KEY_ID     = credentials('access_key')
         AWS_SECRET_ACCESS_KEY = credentials('access_secret_key')
     }
+    sh 'echo $AWS_ACCESS_KEY_ID'
     stage('Plan') {
         dir ("dev") {
             sh 'terraform plan'
