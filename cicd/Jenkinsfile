@@ -39,6 +39,7 @@ def plan() {
     stage('Plan') {
         dir ("dev") {
             sh 'terraform plan'
+            sh 'printenv'
         }
     }
 }
