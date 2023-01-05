@@ -13,14 +13,18 @@ def checkout() {
 
 def init() {
     stage('Init') {
-        sh 'ls && whoami'
-        sh 'cd dev && terraform init'
+        dir ("dev") {
+            sh 'ls && whoami'
+            sh 'terraform init'
+        }
     }
 }
 
 def lint() {
-    stage('Init') {
-        sh 'cd dev && terraform fmt'
-        sh 'cd dev && terraform validate'
+    stage('Lint') {
+        dir ("dev") {
+            sh 'terraform fmt'
+            sh 'terraform validate'
+        }
     }
 }
