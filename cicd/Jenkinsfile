@@ -1,7 +1,7 @@
 node {
-    withCredentials([
-        string(credentialsId: "access_key", variable: 'access_key'),
-        string(credentialsId: "access_secret_key", variable: 'access_secret_key')
+    withEnv([
+        "AWS_ACCESS_KEY_ID=${string(credentialsId: 'access_key', variable: 'access_key')}",
+        "AWS_SECRET_ACCESS_KEY=${string(credentialsId: 'access_secret_key', variable: 'access_secret_key')}"
     ]) {
         checkout()
         init()
