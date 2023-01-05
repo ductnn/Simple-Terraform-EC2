@@ -1,13 +1,11 @@
 node {
-    options {
-        ansiColor('xterm')
-    }    
-
     withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
-        checkout()
-        init()
-        lint()
-        plan()
+        ansiColor('xterm') {
+            checkout()
+            init()
+            lint()
+            plan()
+        }
     }
 }
 
