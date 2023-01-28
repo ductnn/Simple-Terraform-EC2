@@ -30,10 +30,10 @@ def debug(message) {
     """
 }
 
-def test(message) {
+def test(String message) {
     loadColors()
     sh """
-    echo -e "${RED}[TESTTTTT] - $message  ${NC}"
+    echo -e "${RED}[TESTTTTT] - ${message}  ${NC}"
     """
 }
 
