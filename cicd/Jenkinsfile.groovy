@@ -1,3 +1,5 @@
+jenkinsfile_utils = load 'Jenkinsfile.utils.groovy'
+
 node {
     withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
         ansiColor('xterm') {
@@ -20,6 +22,7 @@ def init() {
     stage('Init') {
         dir ("dev") {
             sh 'ls && whoami'
+            jenkinsfile_utils.test "ls && whoami"
             sh 'terraform init'
         }
     }
