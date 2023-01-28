@@ -54,9 +54,13 @@ def plan() {
 }
 
 def hello() {
+    def log_test
+
     stage('Helloo') {
         dir ("dev") {
-            sh 'echo Duma'
+            log_test = sh 'echo Duma'
         }
     }
+
+    return log_test
 }
