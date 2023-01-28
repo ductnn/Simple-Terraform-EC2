@@ -2,6 +2,7 @@ node {
     withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
         ansiColor('xterm') {
             checkout()
+            hello()
             loadConfig()
             init()
             lint()
