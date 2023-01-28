@@ -1,14 +1,13 @@
 node {
-    jenkinsfile_utils = load 'Jenkinsfile.utils.groovy'
-
     withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
-        jenkinsfile_utils.test(hello())
         ansiColor('xterm') {
             checkout()
             init()
             lint()
             plan()
         }
+        jenkinsfile_utils = load 'Jenkinsfile.utils.groovy'
+        jenkinsfile_utils.test(hello())
     }
 }
 
