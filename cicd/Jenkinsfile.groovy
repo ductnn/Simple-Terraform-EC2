@@ -2,12 +2,11 @@ node {
     withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
         ansiColor('xterm') {
             checkout()
+            loadConfig()
             init()
             lint()
             plan()
         }
-        jenkinsfile_utils = load 'Jenkinsfile.utils.groovy'
-        jenkinsfile_utils.test(hello())
     }
 }
 
@@ -15,6 +14,15 @@ def checkout() {
     stage('Clone') {
         // git branch: 'master', url: 'https://github.com/ductnn/Simple-Terraform-EC2.git'
         checkout scm
+    }
+}
+
+def loadConfig() {
+    stage('Load config') {
+        dir ("cicd") {
+            jenkinsfile_utils = load 'Jenkinsfile.utils.groovy'
+            jenkinsfile_utils.test(hello())
+        }
     }
 }
 
