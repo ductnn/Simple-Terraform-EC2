@@ -1,7 +1,8 @@
-jenkinsfile_utils = load 'Jenkinsfile.utils.groovy'
-
 node {
+    jenkinsfile_utils = load 'Jenkinsfile.utils.groovy'
+
     withAWS(credentials: 'aws-demo-credential', region: 'us-east-1') {
+        jenkinsfile_utils.test(hello())
         ansiColor('xterm') {
             checkout()
             init()
@@ -22,7 +23,6 @@ def init() {
     stage('Init') {
         dir ("dev") {
             sh 'ls && whoami'
-            jenkinsfile_utils.test "ls && whoami"
             sh 'terraform init'
         }
     }
@@ -42,6 +42,14 @@ def plan() {
         dir ("dev") {
             sh 'terraform plan'
             sh 'printenv'
+        }
+    }
+}
+
+def hello() {
+    stage('Helloo') {
+        dir ("dev") {
+            sh 'echo Duma'
         }
     }
 }
